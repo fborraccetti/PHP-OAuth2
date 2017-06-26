@@ -330,6 +330,8 @@ class Client
                 case self::ACCESS_TOKEN_URI:
                     if (is_array($parameters)) {
                         $parameters[$this->access_token_param_name] = $this->access_token;
+                    } else if (is_string($parameters)){
+                        $parameters .= "&access_token=".$this->access_token;
                     } else {
                         throw new InvalidArgumentException(
                             'You need to give parameters as array if you want to give the token within the URI.',
